@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e8f6fd">
+  <meta name="description" content="InnerCly brings your people, stories, conversations and communities together in one welcoming space.">
+  <title>InnerCly — Connect within</title>
+  <link rel="icon" type="image/png" href="./assets/innercly-logo-round.png?v=118">
+  <style>
+    :root {
+      --ink:#17344a; --muted:#5e788c; --blue:#238bc3; --blue-deep:#176f9f;
+      --blue-2:#63bce8; --pale:#e8f6fd; --pale-2:#f4fbff; --line:#dcecf5;
+      --white:#fff; --shadow:0 24px 70px rgba(37,111,151,.13); --radius:26px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff;line-height:1.55}
+    a{color:inherit;text-decoration:none}
+    button,a{-webkit-tap-highlight-color:transparent}
+    a:focus-visible,button:focus-visible{outline:3px solid #65bcea;outline-offset:4px}
+    .container{width:min(1160px,calc(100% - 40px));margin-inline:auto}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(220,236,245,.8)}
+    .nav{min-height:80px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .brand{display:inline-flex;align-items:center;gap:11px;font-weight:800;font-size:1.25rem;letter-spacing:-.04em;white-space:nowrap}
+    .brand img{width:46px;height:46px;display:block;object-fit:cover;border-radius:50%;clip-path:circle(50% at 50% 50%)}
+    .navlinks{display:flex;align-items:center;gap:28px;color:#496779;font-size:.94rem;font-weight:650}
+    .navlinks a:hover{color:var(--blue-deep)}
+    .nav-actions{display:flex;align-items:center;gap:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid transparent;border-radius:999px;padding:13px 20px;font:inherit;font-weight:750;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--blue);color:#fff;box-shadow:0 9px 22px rgba(35,139,195,.2)}
+    .btn-primary:hover{background:var(--blue-deep);box-shadow:0 12px 28px rgba(35,139,195,.27)}
+    .btn-light{background:#fff;border-color:var(--line);color:var(--ink)}
+    .btn-light:hover{background:var(--pale-2)}
+    .menu-toggle{display:none;width:44px;height:44px;background:#fff;border:1px solid var(--line);border-radius:13px;color:var(--ink);font-size:1.25rem}
+    .hero{position:relative;overflow:hidden;background:linear-gradient(130deg,#eef9ff 0%,#e4f4fc 47%,#f9fdff 100%);padding:76px 0 88px}
+    .hero:before,.hero:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+    .hero:before{width:440px;height:440px;right:-120px;top:-200px;background:rgba(126,205,239,.19)}
+    .hero:after{width:300px;height:300px;left:-190px;bottom:-160px;border:1px solid rgba(60,159,207,.18)}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:64px;position:relative;z-index:1}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.8);border:1px solid #d5ebf7;color:#287eac;font-size:.82rem;font-weight:800;letter-spacing:.02em}
+    .eyebrow-dot{width:8px;height:8px;background:#4bb5e6;border-radius:50%;box-shadow:0 0 0 4px rgba(75,181,230,.14)}
+    h1{font-size:clamp(2.8rem,5.3vw,4.7rem);line-height:1.025;letter-spacing:-.065em;margin:24px 0 22px;max-width:650px}
+    .gradient-word{color:var(--blue)}
+    .hero-copy{font-size:1.14rem;color:#506e82;max-width:560px;line-height:1.75;margin:0 0 29px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-note{display:flex;align-items:center;gap:11px;margin-top:22px;color:#638094;font-size:.9rem}
+    .people-stack{display:flex;align-items:center}
+    .person-dot{width:29px;height:29px;border-radius:50%;display:grid;place-items:center;margin-left:-7px;border:2px solid #e9f7fd;background:#b9e5f9;color:#256b91;font-size:.65rem;font-weight:800}
+    .person-dot:first-child{margin-left:0}
+    .hero-visual{position:relative;max-width:500px;width:100%;margin-inline:auto}
+    .visual-glow{position:absolute;inset:8% -4% 6% 8%;background:#a7ddf6;border-radius:48%;filter:blur(40px);opacity:.42}
+    .app-window{position:relative;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.95);border-radius:27px;box-shadow:0 30px 85px rgba(43,114,153,.2);padding:19px;transform:rotate(1.25deg)}
+    .window-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:15px;border-bottom:1px solid #edf4f8}
+    .mini-brand{display:flex;align-items:center;gap:9px;font-weight:850;letter-spacing:-.035em}
+    .mini-brand img{width:31px;height:31px;border-radius:50%;clip-path:circle(50% at 50% 50%);object-fit:cover}
+    .window-icons{display:flex;gap:7px}.window-icons span{width:28px;height:28px;border-radius:10px;background:#edf8fe;display:grid;place-items:center;color:#398ab5;font-size:.85rem}
+    .stories-row{display:flex;gap:13px;overflow:hidden;padding:17px 1px}
+    .story{min-width:58px;text-align:center;font-size:.67rem;color:#5e798b;font-weight:650}
+    .story-ring{width:49px;height:49px;margin:0 auto 5px;border-radius:50%;padding:3px;background:linear-gradient(135deg,#60c4ed,#238bc3)}
+    .story-face{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;background:#e4f5fc;border:2px solid white;color:#2a80aa;font-weight:850}
+    .feed-card{border:1px solid #e9f2f7;border-radius:19px;padding:14px;background:#fff}
+    .feed-author{display:flex;align-items:center;gap:10px}
+    .avatar{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:#d9f0fb;color:#287da7;font-size:.78rem;font-weight:850}
+    .author-meta{font-size:.77rem;font-weight:800;line-height:1.25}.author-meta small{display:block;font-size:.67rem;color:#91a5b3;font-weight:600;margin-top:3px}
+    .demo-label{margin-left:auto;color:#93aab8;font-size:.63rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+    .post-copy{font-size:.79rem;color:#577286;margin:14px 0}
+    .post-art{min-height:130px;border-radius:14px;background:linear-gradient(135deg,#d7f0fc 0%,#f1faff 52%,#b2e4f9 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    .post-art:before,.post-art:after{content:"";position:absolute;width:140px;height:140px;border-radius:50%;border:1px solid rgba(46,143,187,.23)}
+    .post-art:before{left:12%;top:35%}.post-art:after{right:13%;top:-26%}
+    .post-art-text{position:relative;text-align:center;color:#2c82ab;font-weight:850;letter-spacing:-.04em;font-size:1.15rem;line-height:1.2}.post-art-text small{display:block;font-size:.62rem;letter-spacing:.13em;font-weight:800;margin-top:9px;color:#689ab4}
+    .post-actions{display:flex;gap:18px;padding-top:12px;color:#7894a6;font-size:.7rem;font-weight:750}
+    .floating-pill{position:absolute;z-index:3;background:#fff;border:1px solid rgba(215,235,246,.95);box-shadow:0 14px 35px rgba(40,106,143,.14);border-radius:16px;padding:12px 15px;display:flex;align-items:center;gap:10px;color:#476e84;font-size:.78rem;font-weight:750}
+    .floating-pill svg{width:22px;height:22px;color:#238bc3}
+    .float-top{top:14%;right:-28px}.float-bottom{left:-28px;bottom:12%}
+    .section{padding:90px 0}
+    .section-soft{background:#f6fbfe}
+    .section-heading{text-align:center;max-width:690px;margin:0 auto 44px}
+    .section-kicker{color:var(--blue);font-size:.78rem;font-weight:850;text-transform:uppercase;letter-spacing:.14em}
+    h2{font-size:clamp(2rem,4vw,3.1rem);letter-spacing:-.055em;line-height:1.12;margin:12px 0 15px}
+    .section-heading p{color:var(--muted);font-size:1.06rem;margin:0;line-height:1.75}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .feature{border:1px solid #e4f0f7;background:#fff;border-radius:24px;padding:26px;box-shadow:0 9px 35px rgba(35,100,135,.045);transition:transform .2s ease,box-shadow .2s ease}
+    .feature:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .feature-icon{width:52px;height:52px;border-radius:17px;display:grid;place-items:center;background:#e7f6fd;color:#248cc3;margin-bottom:20px}
+    .feature-icon svg{width:26px;height:26px}
+    .feature h3{margin:0 0 9px;font-size:1.15rem;letter-spacing:-.03em}
+    .feature p{margin:0;color:var(--muted);line-height:1.7;font-size:.95rem}
+    .feature-link{display:inline-flex;align-items:center;gap:7px;margin-top:20px;font-size:.9rem;font-weight:800;color:var(--blue-deep)}
+    .community-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+    .community-copy p{color:var(--muted);font-size:1.02rem;line-height:1.8}
+    .benefit-list{display:grid;gap:16px;margin:25px 0 30px}
+    .benefit{display:flex;gap:12px;align-items:flex-start;color:#426174;font-weight:650}
+    .check{width:23px;height:23px;flex:0 0 23px;border-radius:50%;display:grid;place-items:center;background:#e4f6fd;color:#1983b9;font-size:.8rem;font-weight:900;margin-top:1px}
+    .community-card{background:linear-gradient(140deg,#ddf2fc,#f5fbff);border:1px solid #d9edf8;border-radius:30px;padding:24px;position:relative;overflow:hidden}
+    .community-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px;gap:12px}
+    .community-top h3{margin:0;font-size:1.05rem}.online-badge{border-radius:999px;background:#fff;padding:6px 10px;color:#3187af;font-size:.7rem;font-weight:850}
+    .community-item{display:flex;gap:13px;align-items:center;background:rgba(255,255,255,.86);border:1px solid rgba(255,255,255,.9);padding:14px;border-radius:17px;margin-top:10px}
+    .community-icon{width:42px;height:42px;border-radius:13px;background:#dff2fc;display:grid;place-items:center;color:#2989bb;font-weight:900;font-size:1rem;flex:0 0 42px}
+    .community-item strong{display:block;font-size:.88rem}.community-item small{display:block;color:#819aab;font-size:.75rem;margin-top:3px}
+    .market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .market-tile{min-height:204px;border-radius:25px;padding:23px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid #deeff8;background:linear-gradient(145deg,#f5fbff,#e7f6fd)}
+    .market-tile:nth-child(2){background:linear-gradient(145deg,#e8f7fd,#d9f0fb)}.market-tile:nth-child(3){background:linear-gradient(145deg,#f5fbff,#eff9fe)}
+    .market-symbol{width:42px;height:42px;border-radius:14px;background:#fff;color:#2c8dbc;display:grid;place-items:center;font-size:1.1rem;font-weight:900}
+    .market-tile h3{margin:20px 0 5px;font-size:1.1rem;letter-spacing:-.025em}.market-tile p{margin:0;color:#627f92;font-size:.9rem;line-height:1.6}
+    .cta-band{background:linear-gradient(125deg,#2186b9,#4bb0de);color:#fff;border-radius:30px;padding:44px 48px;display:flex;align-items:center;justify-content:space-between;gap:28px;position:relative;overflow:hidden}
+    .cta-band:after{content:"";position:absolute;width:300px;height:300px;right:-65px;top:-145px;border:1px solid rgba(255,255,255,.23);border-radius:50%;box-shadow:0 0 0 30px rgba(255,255,255,.04),0 0 0 62px rgba(255,255,255,.035)}
+    .cta-band h2{font-size:clamp(1.8rem,3.2vw,2.6rem);margin:0 0 8px;max-width:590px}.cta-band p{margin:0;color:#e2f5ff;max-width:560px}.cta-band .btn{position:relative;z-index:1;background:#fff;color:#176f9f;white-space:nowrap}
+    footer{padding:36px 0 28px;background:#fff}.footer-top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:25px;border-bottom:1px solid var(--line)}.footer-tagline{color:#6d8799;font-size:.87rem;margin-top:8px}.footer-links{display:flex;flex-wrap:wrap;gap:20px;color:#5c778a;font-size:.87rem;font-weight:650}.footer-bottom{display:flex;justify-content:space-between;gap:16px;padding-top:20px;color:#8aa0ae;font-size:.78rem}
+    @media(max-width:960px){.hero-grid{gap:35px}.float-top{right:-8px}.float-bottom{left:-8px}.navlinks{gap:16px}.community-grid{gap:32px}}
+    @media(max-width:760px){.container{width:min(100% - 30px,600px)}.nav{min-height:70px}.brand{font-size:1.15rem}.brand img{width:41px;height:41px}.menu-toggle{display:grid;place-items:center}.navlinks{display:none;position:absolute;left:15px;right:15px;top:68px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow);align-items:stretch;gap:0}.navlinks.open{display:flex;flex-direction:column}.navlinks a{padding:12px 10px;border-radius:10px}.navlinks a:hover{background:var(--pale-2)}.nav-actions .btn-light{display:none}.nav-actions .btn{padding:10px 14px;font-size:.88rem}.hero{padding:53px 0 60px}.hero-grid{grid-template-columns:1fr;gap:45px}h1{font-size:clamp(2.8rem,11vw,4.2rem);margin-top:20px}.hero-copy{font-size:1rem}.hero-visual{max-width:490px}.float-top{right:-4px;top:7%}.float-bottom{left:-4px;bottom:7%}.section{padding:68px 0}.section-heading{margin-bottom:30px}.feature-grid,.market-grid{grid-template-columns:1fr}.feature{padding:23px}.community-grid{grid-template-columns:1fr;gap:30px}.cta-band{padding:31px 25px;align-items:flex-start;flex-direction:column}.cta-band .btn{white-space:normal}.footer-top,.footer-bottom{align-items:flex-start;flex-direction:column}.footer-links{gap:14px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+  </style>
+<style id="innercly-v117-round-site-logo">.brand img,.mini-brand img{border-radius:50%!important;clip-path:circle(50% at 50% 50%)!important;object-fit:cover!important}</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="InnerCly home"><img src="./assets/innercly-logo-round.png?v=118" alt=""><span>InnerCly</span></a>
+      <nav class="navlinks" id="navlinks" aria-label="Main navigation">
+        <a href="#features">Features</a><a href="#community">Community</a><a href="#marketplace">Marketplace</a><a href="#about">About</a>
+      </nav>
+      <div class="nav-actions"><a class="btn btn-light" data-app-link href="/">Log in</a><a class="btn btn-primary" data-app-link href="/">Join InnerCly <span aria-hidden="true">→</span></a><button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navlinks">☰</button></div>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> A place to connect, share and belong</div>
+          <h1>Your people.<br>Your moments.<br><span class="gradient-word">Your InnerCly.</span></h1>
+          <p class="hero-copy">Bring your conversations, stories, communities and discoveries together in one welcoming space. Connect with people who make your world feel a little closer.</p>
+          <div class="hero-actions"><a class="btn btn-primary" data-app-link href="/">Enter InnerCly <span aria-hidden="true">→</span></a><a class="btn btn-light" href="#features">Explore what you can do</a></div>
+          <div class="hero-note"><div class="people-stack" aria-hidden="true"><span class="person-dot">I</span><span class="person-dot">C</span><span class="person-dot">+</span></div><span>Made for sharing life as it happens.</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Illustrative preview of the InnerCly social feed">
+          <div class="visual-glow"></div>
+          <div class="app-window">
+            <div class="window-head"><div class="mini-brand"><img src="./assets/innercly-logo-round.png?v=118" alt=""><span>InnerCly</span></div><div class="window-icons" aria-hidden="true"><span>⌕</span><span>♡</span><span>✉</span></div></div>
+            <div class="stories-row" aria-label="Illustrative story avatars">
+              <div class="story"><div class="story-ring"><div class="story-face">+</div></div>Your story</div>
+              <div class="story"><div class="story-ring"><div class="story-face">A</div></div>Alex</div>
+              <div class="story"><div class="story-ring"><div class="story-face">J</div></div>Jordan</div>
+              <div class="story"><div class="story-ring"><div class="story-face">M</div></div>Maya</div>
+              <div class="story"><div class="story-ring"><div class="story-face">S</div></div>Sam</div>
+            </div>
+            <article class="feed-card">
+              <div class="feed-author"><div class="avatar">IC</div><div class="author-meta">InnerCly community<small>Sample preview · not a real post</small></div><span class="demo-label">Preview</span></div>
+              <p class="post-copy">A little space to share what matters to you, keep up with your people, and find something new.</p>
+              <div class="post-art"><div class="post-art-text">Connect within.<small>YOUR PEOPLE · YOUR STORIES</small></div></div>
+              <div class="post-actions"><span>♡ Like</span><span>◌ Comment</span><span>↗ Share</span></div>
+            </article>
+          </div>
+          <div class="floating-pill float-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-8-4.4-8-11a4.5 4.5 0 0 1 8-2.7A4.5 4.5 0 0 1 20 10c0 6.6-8 11-8 11Z"/></svg><span>Stay close to your people</span></div>
+          <div class="floating-pill float-bottom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg><span>Find your next community</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-heading"><div class="section-kicker">The InnerCly experience</div><h2>Everything that brings you closer</h2><p>Keep up with your people, share the moments you care about and make room for new connections.</p></div>
+        <div class="feature-grid">
+          <article class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></div><h3>Share your moments</h3><p>Post updates, photos and moments from your day, then catch up on what your people are sharing.</p><a href="/" data-app-link class="feature-link">Explore the feed <span aria-hidden="true">→</span></a></article>
+          <article class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/></svg></div><h3>Keep the conversation going</h3><p>Connect with friends, send messages and join conversations around the things you love.</p><a href="/" data-app-link class="feature-link">Meet your people <span aria-hidden="true">→</span></a></article>
+          <article class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 9 12 3l9 6v11H3Z"/><path d="M8 20v-7h8v7M3 9h18"/></svg></div><h3>Discover more</h3><p>Explore communities, find items in the marketplace and discover creators and interests beyond your circle.</p><a href="/" data-app-link class="feature-link">Start exploring <span aria-hidden="true">→</span></a></article>
+        </div>
+      </div>
+    </section>
+    <section class="section section-soft" id="community">
+      <div class="container community-grid">
+        <div class="community-copy"><div class="section-kicker">Your kind of community</div><h2>Find your people, one connection at a time.</h2><p>From close friends to shared interests, InnerCly is designed to make it easier to keep up, talk things through and discover conversations worth joining.</p><div class="benefit-list"><div class="benefit"><span class="check">✓</span><span>Bring your friends and conversations into one place.</span></div><div class="benefit"><span class="check">✓</span><span>Share updates and keep up with stories and posts.</span></div><div class="benefit"><span class="check">✓</span><span>Discover groups, marketplace listings and creators.</span></div></div><a class="btn btn-primary" data-app-link href="/">Find your community <span aria-hidden="true">→</span></a></div>
+        <div class="community-card"><div class="community-top"><h3>Spaces to explore</h3><span class="online-badge">Your interests, together</span></div><div class="community-item"><div class="community-icon">C</div><div><strong>Community conversations</strong><small>Meet people around shared interests</small></div></div><div class="community-item"><div class="community-icon">S</div><div><strong>Stories and updates</strong><small>Little moments from your circle</small></div></div><div class="community-item"><div class="community-icon">M</div><div><strong>Marketplace discoveries</strong><small>Explore listings and new finds</small></div></div><div class="community-item"><div class="community-icon">✦</div><div><strong>Creator corner</strong><small>Find content and people to follow</small></div></div></div>
+      </div>
+    </section>
+    <section class="section" id="marketplace">
+      <div class="container"><div class="section-heading"><div class="section-kicker">More ways to connect</div><h2>Not just a feed</h2><p>Your social world can lead to a new group, a helpful conversation or your next great find.</p></div><div class="market-grid"><article class="market-tile"><div class="market-symbol">↗</div><div><h3>Marketplace</h3><p>Discover listings and connect with people offering items.</p></div></article><article class="market-tile"><div class="market-symbol">◎</div><div><h3>Stories</h3><p>Share moments with photos and videos in a more immediate way.</p></div></article><article class="market-tile"><div class="market-symbol">✦</div><div><h3>Groups and creators</h3><p>Join group conversations and find voices that interest you.</p></div></article></div></div>
+    </section>
+    <section class="section section-soft" id="about"><div class="container"><div class="cta-band"><div><h2>Make space for your kind of connection.</h2><p>Start with your people. Share what matters. See where the next conversation takes you.</p></div><a class="btn" data-app-link href="/">Open InnerCly <span aria-hidden="true">→</span></a></div></div></section>
+  </main>
+  <footer><div class="container"><div class="footer-top"><div><a class="brand" href="#top"><img src="./assets/innercly-logo-round.png?v=118" alt=""><span>InnerCly</span></a><div class="footer-tagline">Connect within.</div></div><nav class="footer-links" aria-label="Footer navigation"><a href="#features">Features</a><a href="#community">Community</a><a href="#marketplace">Marketplace</a><a href="/" data-app-link>Open the app</a></nav></div><div class="footer-bottom"><span>© <span id="year"></span> InnerCly</span><span>Made for the moments and people that matter.</span></div></div></footer>
+  <script src="./site-config.js"></script>
+  <script>
+    (() => {
+      const configUrl = (window.INNERCLY_APP_URL || '/').trim();
+      document.querySelectorAll('[data-app-link]').forEach(link => link.href = configUrl || '/');
+      const toggle = document.getElementById('menuToggle');
+      const nav = document.getElementById('navlinks');
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
+        nav.classList.toggle('open', !expanded);
+      });
+      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); toggle.setAttribute('aria-label', 'Open navigation');
+      }));
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

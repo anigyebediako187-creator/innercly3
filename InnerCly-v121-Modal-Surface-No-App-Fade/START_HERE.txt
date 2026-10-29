@@ -1,0 +1,21 @@
+INNERCLY v121 — CREATE FLOW DESIGN POLISH
+
+1. Extract this ZIP into a NEW folder.
+2. Double-click START_INNERCLY.bat.
+3. Keep the black Command Prompt window open while using InnerCly.
+4. Sign in with your existing account.
+
+Do not open index.html directly; launch the app with START_INNERCLY.bat so it can use its local server and database.
+The v40 and v80 master backups are included under backups/ and are not launch files.
+
+What changed in v121:
+- The server-backed Create Post, Story camera, and Create Group flows keep the white + light-blue designs from v119.
+- The local/offline fallback Post and Story dialogs now use matching styled modals instead of the old plain forms. The fallback Create Group panel now opens a matching styled modal.
+- These fallback paths retain their existing local saving behaviour and media-size limits; they do not pretend to provide server-only controls such as public/friends privacy selection or server voice notes.
+
+The changes are limited to the Post, Story, and Group creation interfaces plus modal class cleanup. Existing feed, camera, Story viewer/player, authentication, navigation, section animations, and server-backed save handlers are retained. The compact upper layout and logo assets are unchanged.
+
+Build verification: the local launcher expects v121. This ZIP does not update your live Render website automatically. Keep your existing working folder until you have tested this candidate locally.
+
+
+IMPORTANT: The app behind Create Post, Create Story, and Create Group remains clear and unchanged. Only the panels receive the white/light-blue surface treatment.

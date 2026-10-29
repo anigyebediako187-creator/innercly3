@@ -1,0 +1,13 @@
+INNERCLY v120 — CREATE FLOW DESIGN POLISH
+
+This ZIP is a separate local candidate; it does not change your existing folders or the live Render website by itself.
+
+To test locally:
+1. Extract into a new folder.
+2. Double-click START_INNERCLY.bat and keep the Command Prompt window open.
+3. Sign in, open Create a post, and check the 500-character counter, audience selector, file picker/drop zone, media preview, emoji insertion, and voice note controls.
+4. Open Create a story and check camera permissions, flip camera, filters/stickers/draw, caption, media chooser, capture and share.
+5. Open Groups/Circles, create a group, then confirm it appears in the list.
+6. Test on phone-sized screens too. Stories creation and playback should continue to work.
+
+Updated source files: index.html, main.py (build marker), and launch_app.py (build check). UI/backend routes and their existing data behavior are preserved. The v40 and v80 master backups are included byte-for-byte unchanged. No live Render deployment was performed by creating this ZIP.
